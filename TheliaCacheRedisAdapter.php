@@ -12,6 +12,8 @@
 
 namespace TheliaCacheRedisAdapter;
 
+use Propel\Runtime\Connection\ConnectionInterface;
+use Thelia\Core\HttpFoundation\Request;
 use Thelia\Module\BaseModule;
 
 class TheliaCacheRedisAdapter extends BaseModule
@@ -19,10 +21,32 @@ class TheliaCacheRedisAdapter extends BaseModule
     /** @var string */
     const DOMAIN_NAME = 'theliacacheredisadapter';
 
-    /*
-     * You may now override BaseModuleInterface methods, such as:
-     * install, destroy, preActivation, postActivation, preDeactivation, postDeactivation
-     *
-     * Have fun !
+    /**
+     * @inheritdoc
      */
+    public function postActivation(ConnectionInterface $con = null)
+    {
+        if (null === TheliaCacheRedisAdapter::getConfigValue('namespace')) {
+            $namespace = $this->generateNameSpace();
+
+            if (!empty($namespace)) {
+                TheliaCacheRedisAdapter::setConfigValue('namespace', $namespace);
+            }
+        }
+    }
+
+    public function generateNameSpace()
+    {
+        /** @var Request $request */
+        $request = $this->container->get('request_stack')->getCurrentRequest();
+
+        $host = $request->getHost();
+
+        $host = strtolower($host);
+
+        $host = str_replace('.', '_', $host);
+        $host = str_replace('www_', '', $host);
+
+        return $host;
+    }
 }

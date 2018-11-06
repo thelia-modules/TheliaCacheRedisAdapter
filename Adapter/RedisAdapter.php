@@ -9,6 +9,7 @@
 /*      For the full copyright and license information, please view the LICENSE.txt  */
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
+
 namespace TheliaCacheRedisAdapter\Adapter;
 
 use Symfony\Component\Cache\Adapter\RedisAdapter as RedisAdapterCore;
@@ -42,6 +43,6 @@ class RedisAdapter extends RedisAdapterCore
             empty($options) ? null : $options
         );
 
-        parent::__construct($client, $namespace . '_' . $environment, $defaultLifetime);
+        parent::__construct($client, $namespace . '_' . $environment . '_', $defaultLifetime);
     }
 }

@@ -4,8 +4,8 @@
   "type": "thelia-module",
   "require": {
     "thelia/installer": "~1.1",
-    "symfony/cache": "~3.1.0",
-    "predis/predis": "~1.1.0"
+    "symfony/cache": "^3.1|^4.0",
+    "predis/predis": "^1.1"
   },
   "extra": {
     "installer-name": "TheliaCacheRedisAdapter"
