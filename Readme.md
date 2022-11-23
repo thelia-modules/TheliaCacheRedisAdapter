@@ -15,5 +15,5 @@ Redis adapter for the thelia_cache service.
 Add it in your main thelia composer.json file
 
 ```
-composer require thelia/thelia-cache-redis-adapter-module:~1.0
+composer require thelia/thelia-cache-redis-adapter-module:~2.0
 ```

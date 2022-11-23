@@ -13,6 +13,7 @@
 namespace TheliaCacheRedisAdapter;
 
 use Propel\Runtime\Connection\ConnectionInterface;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator;
 use Thelia\Core\HttpFoundation\Request;
 use Thelia\Module\BaseModule;
 
@@ -24,7 +25,7 @@ class TheliaCacheRedisAdapter extends BaseModule
     /**
      * @inheritdoc
      */
-    public function postActivation(ConnectionInterface $con = null)
+    public function postActivation(ConnectionInterface $con = null):void
     {
         if (null === TheliaCacheRedisAdapter::getConfigValue('namespace')) {
             $namespace = $this->generateNameSpace();
@@ -35,7 +36,7 @@ class TheliaCacheRedisAdapter extends BaseModule
         }
     }
 
-    public function generateNameSpace()
+    public function generateNameSpace(): array|string
     {
         /** @var Request $request */
         $request = $this->container->get('request_stack')->getCurrentRequest();
@@ -48,5 +49,13 @@ class TheliaCacheRedisAdapter extends BaseModule
         $host = str_replace('www_', '', $host);
 
         return $host;
+    }
+
+    public static function configureServices(ServicesConfigurator $servicesConfigurator): void
+    {
+        $servicesConfigurator->load(self::getModuleCode().'\\', __DIR__)
+            ->exclude([THELIA_MODULE_DIR . ucfirst(self::getModuleCode()). "/I18n/*"])
+            ->autowire(true)
+            ->autoconfigure(true);
     }
 }
