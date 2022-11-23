@@ -4,11 +4,4 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
 
-    <services>
-        <service id="thelia.cache" class="TheliaCacheRedisAdapter\Adapter\RedisAdapter">
-            <argument>thelia_cache</argument>
-            <argument>600</argument>
-            <argument>%kernel.environment%</argument>
-        </service>
-    </services>
 </config>
