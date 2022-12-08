@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
 
     <services>
-        <service id="thelia.cache" class="TheliaCacheRedisAdapter\Adapter\RedisAdapter">
+        <service id="Symfony\Component\Cache\Adapter\AdapterInterface" class="TheliaCacheRedisAdapter\Adapter\RedisAdapter">
             <argument>thelia_cache</argument>
             <argument>600</argument>
             <argument>%kernel.environment%</argument>
