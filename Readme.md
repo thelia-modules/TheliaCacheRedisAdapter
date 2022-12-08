@@ -1,7 +1,7 @@
 # Thelia Cache Redis Adapter
 
 Redis adapter for the thelia_cache service.
-[Thelia Documentation](http://doc.thelia.net/en/documentation/modules/caching.html)
+[Thelia Documentation](http://doc.thelia.net)
 
 ## Installation
 

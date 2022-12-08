@@ -10,7 +10,7 @@
         <language>en_US</language>
         <language>fr_FR</language>
     </languages>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
     <authors>
         <author>
             <name>Gilles Bourgeat</name>
@@ -18,6 +18,6 @@
         </author>
     </authors>
     <type>classic</type>
-    <thelia>2.2.0</thelia>
+    <thelia>2.5.0</thelia>
     <stability>prod</stability>
 </module>

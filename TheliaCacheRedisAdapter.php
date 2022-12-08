@@ -13,6 +13,7 @@
 namespace TheliaCacheRedisAdapter;
 
 use Propel\Runtime\Connection\ConnectionInterface;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator;
 use Thelia\Core\HttpFoundation\Request;
 use Thelia\Module\BaseModule;
 
@@ -24,7 +25,7 @@ class TheliaCacheRedisAdapter extends BaseModule
     /**
      * @inheritdoc
      */
-    public function postActivation(ConnectionInterface $con = null)
+    public function postActivation(ConnectionInterface $con = null): void
     {
         if (null === TheliaCacheRedisAdapter::getConfigValue('namespace')) {
             $namespace = $this->generateNameSpace();
